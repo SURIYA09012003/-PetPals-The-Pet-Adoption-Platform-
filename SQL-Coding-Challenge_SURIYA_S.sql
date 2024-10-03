@@ -1,4 +1,4 @@
---1. Provide a SQL script that initializes the database for the Pet Adoption Platform îPetPalsî. 
+--1. Provide a SQL script that initializes the database for the Pet Adoption Platform ‚ÄùPetPals‚Äù. 
 create database Petpals_database;
 
 use database Petpals_database;
@@ -323,7 +323,7 @@ CROSS JOIN AdoptionEvents ae
 ORDER BY s.Name, ae.Event_Date;
 
 --20.  the shelter that has the highest number of adopted pets. 
-SELECT 
+SELECT TOP 1
 s.Shelter_ID,
 s.Name AS Shelter_Name,
 COUNT(p.Pet_ID) AS Adopted_Pets_Count
@@ -331,5 +331,4 @@ FROM Shelters s
 LEFT JOIN Pets p ON s.Shelter_ID = p.Shelter_ID
 WHERE p.Owner_ID IS NOT NULL
 GROUP BY s.Shelter_ID, s.Name
-ORDER BY Adopted_Pets_Count DESC
-OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY; 
+ORDER BY Adopted_Pets_Count DESC; 
